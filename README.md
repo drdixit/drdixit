@@ -1,4 +1,4 @@
-# <br><b>(•ᴥ•)ゞ&nbsp;&nbsp;&nbsp;Salutations!<br>&nbsp;&#8201;/|\\<br>&nbsp;&#8201;/ \\</b>
+# <br><br><br><b>(•ᴥ•)ゞ&nbsp;&nbsp;&nbsp;Salutations!<br>&nbsp;&#8201;/|\\<br>&nbsp;&#8201;/ \\</b>
 # <br>⚠️ Warning: "user your credentials, paths and everything"
 # Windows 11 Cheat Sheet
 ## powershell config
