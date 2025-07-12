@@ -1,4 +1,4 @@
-<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(•ᴥ•)ゞ&nbsp;&nbsp;&nbsp;&nbsp;Salutations!<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8201;/|\\<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8201;/ \\</b><br>
+# <b>(•‿•)ゞ&nbsp;&nbsp;&nbsp;Salutations!<br>&nbsp;&#8201;/|\\<br>&nbsp;&#8201;/ \\</b><br>
 # ⚠️ Warning: "user your credentials, paths and everything"
 # Windows 11 Cheat Sheet
 ## powershell config
