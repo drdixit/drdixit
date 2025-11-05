@@ -1,5 +1,5 @@
 # <b>(•ᴥ•)ゞ&nbsp;&nbsp;&nbsp;Salutations!<br>&nbsp;&#8201;/|\\<br>&nbsp;&#8201;/ \\</b>
-# <br>⚠️ Warning: "user your credentials, paths and everything"
+# <br>⚠️ Warning: "use your credentials, paths and everything"
 # Windows 11 Cheat Sheet
 ## powershell config
 Location ~ `C:\Users\user\Documents\PowerShell\Microsoft.PowerShell_profile.ps1` If not already exist create it<br>
