@@ -205,4 +205,55 @@ C:\Users\mail> cat .\.gitconfig
 ```
 i still have my doubts about / \\ or ~/ in path but final one works with signing key with \\ and program with /
 
+oh shit i made a mistake
+
+for ssh signing you need to use ssh-keygen not ssh
+## i will refactore this in future
+
+also, your signing key should point to the private key, not the public key i am so stupid
+
+```powershell
+C:\motobill [stock ≡ +0 ~1 -0 ~]> cat C:\Users\mail\.gitconfig
+[user]
+        name = Dixit
+        email = drdixit6@gmail.com
+        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519.pub
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
+[gpg "ssh"]
+        program = C:/Windows/System32/OpenSSH/ssh.exe
+C:\motobill [stock ≡ +0 ~1 -0 ~]> git config --global user.signingkey "C:\Users\mail\.ssh\id_ed25519"
+C:\motobill [stock ≡ +0 ~1 -0 ~]> git commit -m "test"
+error: ssh: Could not resolve hostname sign: No such host is known. ?
+
+fatal: failed to write commit object
+C:\motobill [stock ≡ +0 ~1 -0 ~]> git config --global gpg.ssh.program "C:/Windows/System32/OpenSSH/ssh-keygen.exe"
+C:\motobill [stock ≡ +0 ~1 -0 ~]> git commit -m "test"
+[stock 092a51b] test
+ 1 file changed, 1 deletion(-)
+C:\motobill [stock ↑1]> git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 633 bytes | 633.00 KiB/s, done.
+Total 5 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+To github.com:drdixit/motobill.git
+   7f16c23..092a51b  stock -> stock
+C:\motobill [stock ≡]> cat C:\Users\mail\.gitconfig
+[user]
+        name = Dixit
+        email = drdixit6@gmail.com
+        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
+[gpg "ssh"]
+        program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
+```
+
 
