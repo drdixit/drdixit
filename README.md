@@ -255,5 +255,42 @@ C:\motobill [stock ≡]> cat C:\Users\mail\.gitconfig
 [gpg "ssh"]
         program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
 ```
+llm says this
+How SSH Key Signing Works
+When you specify the signing key:
+
+With .pub (public key path):
+
+Git reads the public key
+ssh-keygen automatically finds the corresponding private key (removes .pub from the path)
+Uses the private key to sign
+
+
+Without .pub (private key path):
+
+Git uses the private key directly
+ssh-keygen can derive the public key from the private key
+Uses the private key to sign
+
+
+
+Both approaches end up using the private key for signing and the public key for verification.
+Why is it "Verified" on GitHub?
+As long as:
+
+You've uploaded the public key to GitHub (Settings → SSH and GPG keys → Signing keys)
+The signature was created with the corresponding private key
+The commit author email matches your GitHub account
+
+GitHub will mark it as "Verified" ✓
+Best Practice
+The official Git documentation recommends using the public key path (.pub) because:
+
+It's more explicit about which key pair you're using
+It's the standard convention
+Some tools may expect the public key format
+
+Bottom Line
+Both work fine! Your previous commits are valid and verified. Stick with .pub going forward as it's the recommended approach, but don't worry about your existing commits - they're perfectly fine.
 
 
