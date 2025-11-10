@@ -106,6 +106,21 @@ ssh-add -l
 |`&#8239;`|─&#8239;─|Slightly thinner than `&nbsp;`|
 
 
+last git config
+```powershell
+C:\motobill [stock ≡]> cat C:\Users\mail\.gitconfig
+[user]
+        name = Dixit
+        email = drdixit6@gmail.com
+        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519.pub
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
+[gpg "ssh"]
+        program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
+```
+
 log for my reference
 cmd as admin
 ```cmd
@@ -115,182 +130,3 @@ setx XDG_DATA_HOME "%USERPROFILE%\.local\share" /M
 setx XDG_STATE_HOME "%USERPROFILE%\.local\state" /M
 setx XDG_CACHE_HOME "%USERPROFILE%\.cache" /M
 ```
-
-powershell as admin
-```powershell
-winget install --scope machine --source winget Microsoft.VisualStudio.2022.BuildTools --force --override "--passive --wait --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --includeOptional"
-```
-normal terminal powershell
-```powershell
-Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-
-scoop install main/git
-reg import "C:\Users\mail\scoop\apps\git\current\install-file-associations.reg"
-
-scoop bucket add extras
-scoop install extras/posh-git
-Add-PoshGitToProfile
-```
-git setup normal terminal
-```powershell
-C:\Users\mail> ssh-keygen -t ed25519 -C "drdixit6@gmail.com"
-Generating public/private ed25519 key pair.
-Enter file in which to save the key (C:\Users\mail/.ssh/id_ed25519):
-Created directory 'C:\\Users\\mail/.ssh'.
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in C:\Users\mail/.ssh/id_ed25519
-Your public key has been saved in C:\Users\mail/.ssh/id_ed25519.pub
-The key fingerprint is:
-SHA256:rWudscCF9jXSbwXxHSYI/SuzD.... drdixit6@gmail.com
-The key's randomart image is:
-+--[ED25519 256]--+
-|         .o ...+ |
-....
-|       o*..      |
-+----[SHA256]-----+
-C:\Users\mail> cat .\.ssh\id_ed25519.pub
-ssh-ed25519 AAAAC3NzaC1lZDI1N.... drdixit6@gmail.com
-C:\Users\mail> git config --global user.name "Dixit"
-C:\Users\mail> git config --global user.email "drdixit6@gmail.com"
-C:\Users\mail> git config --global gpg.format ssh
-C:\Users\mail> git config --global user.signingkey C:\Users\user\.ssh\id_ed25519.pub
-C:\Users\mail> git config --global commit.gpgsign true
-C:\Users\mail> 
-C:\Users\mail> git config --global gpg.ssh.program "C:/Windows/System32/OpenSSH/ssh.exe"
-```
-```powershell
-powershell as admin
-Windows PowerShell
-Copyright (C) Microsoft Corporation. All rights reserved.
-
-Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
-
-Loading personal and system profiles took 838ms.
-C:\WINDOWS\system32> Get-Service ssh-agent | Set-Service -StartupType Automatic
-C:\WINDOWS\system32> Start-Service ssh-agent
-C:\WINDOWS\system32> Add your private key (note: use PRIVATE key, not .pub)^C
-C:\WINDOWS\system32> ssh-add $env:USERPROFILE\.ssh\id_ed25519
-Identity added: C:\Users\mail\.ssh\id_ed25519 (drdixit6@gmail.com)
-C:\WINDOWS\system32> ssh-add -l
-256 SHA256:rWudscCF9jXSbw... drdixit6@gmail.com (ED25519)
-C:\WINDOWS\system32>
-```
-normal terminal
-```powershell
-C:\Users\mail> git config --global user.signingkey ~/.ssh/id_ed25519.pub
-C:\Users\mail> cat .\.gitconfig
-[user]
-        name = Dixit
-        email = drdixit6@gmail.com
-        signingkey = ~/.ssh/id_ed25519.pub
-[gpg]
-        format = ssh
-[commit]
-        gpgsign = true
-[gpg "ssh"]
-        program = C:/Windows/System32/OpenSSH/ssh.exe
-C:\Users\mail> git config --global user.signingkey C:\Users\mail\.ssh\id_ed25519.pub
-C:\Users\mail> cat .\.gitconfig
-[user]
-        name = Dixit
-        email = drdixit6@gmail.com
-        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519.pub
-[gpg]
-        format = ssh
-[commit]
-        gpgsign = true
-[gpg "ssh"]
-        program = C:/Windows/System32/OpenSSH/ssh.exe
-```
-i still have my doubts about / \\ or ~/ in path but final one works with signing key with \\ and program with /
-
-oh shit i made a mistake
-
-for ssh signing you need to use ssh-keygen not ssh
-## i will refactore this in future
-
-also, your signing key should point to the private key, not the public key i am so stupid
-
-```powershell
-C:\motobill [stock ≡ +0 ~1 -0 ~]> cat C:\Users\mail\.gitconfig
-[user]
-        name = Dixit
-        email = drdixit6@gmail.com
-        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519.pub
-[gpg]
-        format = ssh
-[commit]
-        gpgsign = true
-[gpg "ssh"]
-        program = C:/Windows/System32/OpenSSH/ssh.exe
-C:\motobill [stock ≡ +0 ~1 -0 ~]> git config --global user.signingkey "C:\Users\mail\.ssh\id_ed25519"
-C:\motobill [stock ≡ +0 ~1 -0 ~]> git commit -m "test"
-error: ssh: Could not resolve hostname sign: No such host is known. ?
-
-fatal: failed to write commit object
-C:\motobill [stock ≡ +0 ~1 -0 ~]> git config --global gpg.ssh.program "C:/Windows/System32/OpenSSH/ssh-keygen.exe"
-C:\motobill [stock ≡ +0 ~1 -0 ~]> git commit -m "test"
-[stock 092a51b] test
- 1 file changed, 1 deletion(-)
-C:\motobill [stock ↑1]> git push
-Enumerating objects: 9, done.
-Counting objects: 100% (9/9), done.
-Delta compression using up to 12 threads
-Compressing objects: 100% (5/5), done.
-Writing objects: 100% (5/5), 633 bytes | 633.00 KiB/s, done.
-Total 5 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
-To github.com:drdixit/motobill.git
-   7f16c23..092a51b  stock -> stock
-C:\motobill [stock ≡]> cat C:\Users\mail\.gitconfig
-[user]
-        name = Dixit
-        email = drdixit6@gmail.com
-        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519
-[gpg]
-        format = ssh
-[commit]
-        gpgsign = true
-[gpg "ssh"]
-        program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
-```
-llm says this
-How SSH Key Signing Works
-When you specify the signing key:
-
-With .pub (public key path):
-
-Git reads the public key
-ssh-keygen automatically finds the corresponding private key (removes .pub from the path)
-Uses the private key to sign
-
-
-Without .pub (private key path):
-
-Git uses the private key directly
-ssh-keygen can derive the public key from the private key
-Uses the private key to sign
-
-
-
-Both approaches end up using the private key for signing and the public key for verification.
-Why is it "Verified" on GitHub?
-As long as:
-
-You've uploaded the public key to GitHub (Settings → SSH and GPG keys → Signing keys)
-The signature was created with the corresponding private key
-The commit author email matches your GitHub account
-
-GitHub will mark it as "Verified" ✓
-Best Practice
-The official Git documentation recommends using the public key path (.pub) because:
-
-It's more explicit about which key pair you're using
-It's the standard convention
-Some tools may expect the public key format
-
-Bottom Line
-Both work fine! Your previous commits are valid and verified. Stick with .pub going forward as it's the recommended approach, but don't worry about your existing commits - they're perfectly fine.
-
-
