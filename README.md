@@ -94,6 +94,9 @@ Verify the key is loaded
 ```powershell
 ssh-add -l
 ```
+
+
+
 # ASCI Section
 | Char Code | Size | Width |
 |-----------|------|-------|
@@ -101,3 +104,98 @@ ssh-add -l
 |`&#8201;`|─&#8201;─|~1/5 space|
 |`&#8202;`|─&#8202;─|Very thin|
 |`&#8239;`|─&#8239;─|Slightly thinner than `&nbsp;`|
+
+
+log for my reference
+cmd as admin
+setx HOME "%USERPROFILE%" /M
+setx XDG_CONFIG_HOME "%USERPROFILE%\.config" /M
+setx XDG_DATA_HOME "%USERPROFILE%\.local\share" /M
+setx XDG_STATE_HOME "%USERPROFILE%\.local\state" /M
+setx XDG_CACHE_HOME "%USERPROFILE%\.cache" /M
+
+powershell as admin
+winget install --scope machine --source winget Microsoft.VisualStudio.2022.BuildTools --force --override "--passive --wait --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --includeOptional"
+
+normal terminal powershell
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+scoop install main/git
+reg import "C:\Users\mail\scoop\apps\git\current\install-file-associations.reg"
+
+scoop bucket add extras
+scoop install extras/posh-git
+Add-PoshGitToProfile
+
+git setup normal terminal
+C:\Users\mail> ssh-keygen -t ed25519 -C "drdixit6@gmail.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (C:\Users\mail/.ssh/id_ed25519):
+Created directory 'C:\\Users\\mail/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in C:\Users\mail/.ssh/id_ed25519
+Your public key has been saved in C:\Users\mail/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:rWudscCF9jXSbwXxHSYI/SuzD.... drdixit6@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|         .o ...+ |
+....
+|       o*..      |
++----[SHA256]-----+
+C:\Users\mail> cat .\.ssh\id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1N.... drdixit6@gmail.com
+C:\Users\mail> git config --global user.name "Dixit"
+C:\Users\mail> git config --global user.email "drdixit6@gmail.com"
+C:\Users\mail> git config --global gpg.format ssh
+C:\Users\mail> git config --global user.signingkey C:\Users\user\.ssh\id_ed25519.pub
+C:\Users\mail> git config --global commit.gpgsign true
+C:\Users\mail> 
+C:\Users\mail> git config --global gpg.ssh.program "C:/Windows/System32/OpenSSH/ssh.exe"
+
+powershell as admin
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+Loading personal and system profiles took 838ms.
+C:\WINDOWS\system32> Get-Service ssh-agent | Set-Service -StartupType Automatic
+C:\WINDOWS\system32> Start-Service ssh-agent
+C:\WINDOWS\system32> Add your private key (note: use PRIVATE key, not .pub)^C
+C:\WINDOWS\system32> ssh-add $env:USERPROFILE\.ssh\id_ed25519
+Identity added: C:\Users\mail\.ssh\id_ed25519 (drdixit6@gmail.com)
+C:\WINDOWS\system32> ssh-add -l
+256 SHA256:rWudscCF9jXSbw... drdixit6@gmail.com (ED25519)
+C:\WINDOWS\system32>
+
+normal terminal
+C:\Users\mail> git config --global user.signingkey ~/.ssh/id_ed25519.pub
+C:\Users\mail> cat .\.gitconfig
+[user]
+        name = Dixit
+        email = drdixit6@gmail.com
+        signingkey = ~/.ssh/id_ed25519.pub
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
+[gpg "ssh"]
+        program = C:/Windows/System32/OpenSSH/ssh.exe
+C:\Users\mail> git config --global user.signingkey C:\Users\mail\.ssh\id_ed25519.pub
+C:\Users\mail> cat .\.gitconfig
+[user]
+        name = Dixit
+        email = drdixit6@gmail.com
+        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519.pub
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
+[gpg "ssh"]
+        program = C:/Windows/System32/OpenSSH/ssh.exe
+
+i still have my doubts about / \\ or ~/ in path but final one works with signing key with \\ and program with /
+
+
