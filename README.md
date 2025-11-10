@@ -108,16 +108,20 @@ ssh-add -l
 
 log for my reference
 cmd as admin
+```cmd
 setx HOME "%USERPROFILE%" /M
 setx XDG_CONFIG_HOME "%USERPROFILE%\.config" /M
 setx XDG_DATA_HOME "%USERPROFILE%\.local\share" /M
 setx XDG_STATE_HOME "%USERPROFILE%\.local\state" /M
 setx XDG_CACHE_HOME "%USERPROFILE%\.cache" /M
+```
 
 powershell as admin
+```powershell
 winget install --scope machine --source winget Microsoft.VisualStudio.2022.BuildTools --force --override "--passive --wait --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --includeOptional"
-
+```
 normal terminal powershell
+```powershell
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
 scoop install main/git
@@ -126,8 +130,9 @@ reg import "C:\Users\mail\scoop\apps\git\current\install-file-associations.reg"
 scoop bucket add extras
 scoop install extras/posh-git
 Add-PoshGitToProfile
-
+```
 git setup normal terminal
+```powershell
 C:\Users\mail> ssh-keygen -t ed25519 -C "drdixit6@gmail.com"
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (C:\Users\mail/.ssh/id_ed25519):
@@ -153,7 +158,8 @@ C:\Users\mail> git config --global user.signingkey C:\Users\user\.ssh\id_ed25519
 C:\Users\mail> git config --global commit.gpgsign true
 C:\Users\mail> 
 C:\Users\mail> git config --global gpg.ssh.program "C:/Windows/System32/OpenSSH/ssh.exe"
-
+```
+```powershell
 powershell as admin
 Windows PowerShell
 Copyright (C) Microsoft Corporation. All rights reserved.
@@ -169,8 +175,9 @@ Identity added: C:\Users\mail\.ssh\id_ed25519 (drdixit6@gmail.com)
 C:\WINDOWS\system32> ssh-add -l
 256 SHA256:rWudscCF9jXSbw... drdixit6@gmail.com (ED25519)
 C:\WINDOWS\system32>
-
+```
 normal terminal
+```powershell
 C:\Users\mail> git config --global user.signingkey ~/.ssh/id_ed25519.pub
 C:\Users\mail> cat .\.gitconfig
 [user]
@@ -195,7 +202,7 @@ C:\Users\mail> cat .\.gitconfig
         gpgsign = true
 [gpg "ssh"]
         program = C:/Windows/System32/OpenSSH/ssh.exe
-
+```
 i still have my doubts about / \\ or ~/ in path but final one works with signing key with \\ and program with /
 
 
