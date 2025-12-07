@@ -137,6 +137,27 @@ PS C:\Users\mail> cat .\.gitconfig
         allowedSignersFile = C:/Users/mail/.config/git/allowed_signers
 ```
 
+I also added this as well
+```powershell
+PS C:\motobill> git config --global push.autoSetupRemote true
+```
+```powershell
+PS C:\motobill> cat C:\Users\mail\.gitconfig
+[user]
+        name = Dixit
+        email = drdixit6@gmail.com
+        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519.pub
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
+[gpg "ssh"]
+        program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
+        allowedSignersFile = C:/Users/mail/.config/git/allowed_signers
+[push]
+        autoSetupRemote = true
+```
+
 log for my reference
 cmd as admin
 ```cmd
