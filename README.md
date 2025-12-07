@@ -121,6 +121,22 @@ C:\motobill [stock ≡]> cat C:\Users\mail\.gitconfig
         program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
 ```
 
+i also added this to my git config
+```powershell
+PS C:\Users\mail> cat .\.gitconfig
+[user]
+        name = Dixit
+        email = drdixit6@gmail.com
+        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519.pub
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
+[gpg "ssh"]
+        program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
+        allowedSignersFile = C:/Users/mail/.config/git/allowed_signers
+```
+
 log for my reference
 cmd as admin
 ```cmd
