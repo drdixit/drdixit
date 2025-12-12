@@ -1,4 +1,4 @@
-# <b>(•ᴥ•)ゞ&nbsp;&nbsp;&nbsp;Salutations!<br>&nbsp;&#8201;/|\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![visitors](https://visitor-badge.laobi.icu/badge?page_id=drdixit.drdixit)<br>&nbsp;&#8201;/ \\</b>
+# <b>(•ᴥ•)ゞ&nbsp;&nbsp;&nbsp;Salutations!<br>&nbsp;&#8201;/|\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![visitors](https://visitor-badge.laobi.icu/badge?page_id=drdixit.drdixit)<br>&nbsp;&#8201;/ \\</b>
 # <br>⚠️ Warning: "use your credentials, paths and everything"
 # Windows 11 Cheat Sheet
 ## powershell config
