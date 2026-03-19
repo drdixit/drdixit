@@ -107,53 +107,23 @@ ssh-add -l
 
 
 last git config
-```powershell
-C:\motobill [stock ≡]> cat C:\Users\mail\.gitconfig
-[user]
-        name = Dixit
-        email = drdixit6@gmail.com
-        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519.pub
-[gpg]
-        format = ssh
-[commit]
-        gpgsign = true
-[gpg "ssh"]
-        program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
-```
-
-i also added this to my git config
-```powershell
-PS C:\Users\mail> cat .\.gitconfig
-[user]
-        name = Dixit
-        email = drdixit6@gmail.com
-        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519.pub
-[gpg]
-        format = ssh
-[commit]
-        gpgsign = true
-[gpg "ssh"]
-        program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
-        allowedSignersFile = C:/Users/mail/.config/git/allowed_signers
-```
-
 I also added this as well
 ```powershell
 PS C:\motobill> git config --global push.autoSetupRemote true
 ```
 ```powershell
-PS C:\motobill> cat C:\Users\mail\.gitconfig
+PS C:\Users\user> cat .\.gitconfig
 [user]
         name = Dixit
         email = drdixit6@gmail.com
-        signingkey = C:\\Users\\mail\\.ssh\\id_ed25519.pub
+        signingkey = C:\\\\Users\\\\user\\\\.ssh\\\\id_ed25519.pub
 [gpg]
         format = ssh
 [commit]
         gpgsign = true
 [gpg "ssh"]
         program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
-        allowedSignersFile = C:/Users/mail/.config/git/allowed_signers
+        allowedSignersFile = C:/Users/user/.config/git/allowed_signers
 [push]
         autoSetupRemote = true
 ```
